@@ -9,7 +9,8 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/greet', methods=['GET', 'POST'])
+@app.route('/greet', methods=['POST'])
 def greet():
-    name = request.args.get('name') or 'World'
+    # request.form is used for POST while request.get is used for GET
+    name = request.form.get('name') or 'World'
     return render_template('greet.html', name=name)
